@@ -1,0 +1,36 @@
+<div ng-controller="Form" class=container>
+  <div class="row">
+    <div class="col-md-12">
+      <form>
+        <h1>Simple Github API Test App</h1>
+        <p>Enter a single Github username below, and click the button to display a profile info.</p>
+        <div class="form-group">
+          <input type="text" id="gitHubUsername" ng-model="githubUsername" placeholder = "Enter Github username">
+        </div>
+        <button href="#" id="githubSubmit" ng-click="getGitHubInfo">Get User Data</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div ng-show="loaded" class="col-md-12">
+      <h2>{{user.name}}
+        <span class="smallname">
+          (@<a href="{{user.html_url}}" target="_blank" {{user.login}} </a></span>
+          </h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 ghcontent">
+          <div class="avi">
+            <a href="user.html_url" target="_blank">
+              <img src="{{user.avator_url}}" alt="{{user.login}}">
+            </a>
+            <p>{{test}}</p>
+            <p>
+              Followers: {{user.followers}} - Following {{user.following}}<br>Repos: {{user.public_repos}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

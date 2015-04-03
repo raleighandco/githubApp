@@ -1,10 +1,19 @@
-angular.module('githubApp', ['ui.bootstrap','ui.utils','ui.router','ngAnimate']);
+//IFFE Function, don't pollute the global namespace
+(function(){
 
-angular.module('githubApp').config(function($stateProvider, $urlRouterProvider) {
+angular.module('githubApp', [
+  'ui.bootstrap',
+  'ui.utils',
+  'ui.router',
+  'ngAnimate',
+  'form',
+  'home'
+]);
 
+angular.module('githubApp')
+  .config(function($stateProvider, $urlRouterProvider) {
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');
-
 });
 
 angular.module('githubApp').run(function($rootScope) {
@@ -21,3 +30,5 @@ angular.module('githubApp').run(function($rootScope) {
     };
 
 });
+
+}());

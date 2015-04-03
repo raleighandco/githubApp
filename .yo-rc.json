@@ -18,6 +18,20 @@
         "marker": "/* Add Component LESS Above */",
         "template": "@import \"<%= filename %>\";"
       }
-    }
+    },
+    "modules": [
+      {
+        "name": "formModule",
+        "file": "states/form/form-module.js"
+      },
+      {
+        "name": "form",
+        "file": "states/form/form.js"
+      },
+      {
+        "name": "home",
+        "file": "states/home/home.js"
+      }
+    ]
   }
 }
