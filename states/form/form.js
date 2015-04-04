@@ -9,13 +9,14 @@
       url: '/form',
       templateUrl: 'states/form/form.html',
       controller: 'Form'
-    })
+    });
   })
   .controller('Form', ['$scope', function($scope) {
-    $scope.getGitHubInfo = function() {
-      $scope.userNotFound = false;
-    }
     $scope.test = "This is a form controller test!";
-
+    $scope.GetGitHubInfo = function($scope, $http) {
+      $scope.userNotFound = false;
+      $scope.loaded = false;
+      
+    }
   }]);
 }());

@@ -5,14 +5,20 @@
         <h1>Simple Github API Test App</h1>
         <p>Enter a single Github username below, and click the button to display a profile info.</p>
         <div class="form-group">
-          <input type="text" id="gitHubUsername" ng-model="githubUsername" placeholder = "Enter Github username">
+          <input type="text" id="gitHubUsername" ng-model="GithubUsername" placeholder = "Enter Github username">
         </div>
-        <button href="#" id="githubSubmit" ng-click="getGitHubInfo">Get User Data</button>
+        <button href="#" id="githubSubmit" ng-click="GetGitHubInfo()">Get User Data</button>
+        <div id="githubApiData" class="clearfix"></div>
       </form>
     </div>
   </div>
   <div class="row">
-    <div ng-show="loaded" class="col-md-12">
+    <div ng-show="userNotFound">
+      <h2>No Github user data found</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div ng-show="userDataLoaded" class="col-md-12">
       <h2>{{user.name}}
         <span class="smallname">
           (@<a href="{{user.html_url}}" target="_blank" {{user.login}} </a></span>
@@ -20,8 +26,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 ghcontent">
-          <div class="avi">
+        <div class="col-md-12">
+          <div class="githubContent">
             <a href="user.html_url" target="_blank">
               <img src="{{user.avator_url}}" alt="{{user.login}}">
             </a>
@@ -31,6 +37,20 @@
             </p>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="repolist clearfix">
+              <p ng-hide="reposFound">
+                No repositories!
+              </p>
+              <div ng-show="reposFound">
+                <p><strong>Repos List:</strong></p>
+                <ul ng-repeat="repo in repos">
+                  <li><a href="{{repo.html_url}}" target="_blank">{{repo.name}}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-</div>
