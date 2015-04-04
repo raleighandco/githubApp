@@ -11,12 +11,26 @@
       controller: 'Form'
     });
   })
-  .controller('Form', ['$scope', function($scope) {
+  .controller('Form', ['$scope', '$http', function($scope, $http) {
     $scope.test = "This is a form controller test!";
-    $scope.GetGitHubInfo = function($scope, $http) {
+    $scope.GetGitHubInfo = function() {
       $scope.userNotFound = false;
       $scope.loaded = false;
-      
+
+      $http.get("https://api.github.com/users/" + $scope.username)
+        .success(function (data) {
+          if (data.name == "") data.name = data.login;
+          $scope.user = data;
+          $scope.loaded = true;
+        })
+        .error(function () {
+          $scope.userNotFound = true;
+        });
+      $http.get("https://api.github.com/users/" + $scope.username + "/repos")
+        .success(function (data) {
+            $scope.repos = data;
+            $scope.reposFound = data.length > 0;
+        });
     }
   }]);
 }());
